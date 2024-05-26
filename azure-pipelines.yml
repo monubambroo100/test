@@ -23,4 +23,4 @@ stages:
       displayName: 'Pull Image'
       inputs:
         command: pull
-        repository: 'monuregis.azurecr.io/$(imageName):$(tag)'
+        repository: monuregis.azurecr.io/$(imageName):$(tag)
