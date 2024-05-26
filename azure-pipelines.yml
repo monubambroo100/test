@@ -1,0 +1,26 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  imageName: build
+  tag: 1
+
+stages:
+- stage: PullImage
+  jobs:
+  - job: Pull
+    steps:
+    - task: Docker@2
+      displayName: 'Login to ACR'
+      inputs:
+        command: login
+        containerRegistry: testregisconn
+
+    - task: Docker@2
+      displayName: 'Pull Image'
+      inputs:
+        command: pull
+        repository: 'monuregis.azurecr.io/$(imageName):$(tag)'
